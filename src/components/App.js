@@ -14,8 +14,8 @@ class App extends React.Component {
 
                 <div className='container'>
                     <div className='card'>
-                        <div className='card-title'>Start the survey</div>
-                        <div>Start the survey</div>
+                        <input type='text' placeholder='Enter a title of survey' className='card-title-input'></input>
+                        <input type='text' placeholder='Enter a description of survey' className='card-desc-input'></input>
                     </div>
 
                     <Question />

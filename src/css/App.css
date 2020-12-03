@@ -34,14 +34,43 @@ body {
     border-radius: 10px;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.05);
     background-color: #7e57d4;
-    padding: 20px;
+    padding: 15px 20px 20px 20px;
+}
+
+.card-title-input {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+
+    width: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+    border: none;
+    outline: none;
+    background-color: #7e57d4;
+    color: white;
+    height: 30px;
+}
+
+.card-title-input::placeholder, .card-desc-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+.card-title-input:-ms-input-placeholder, .card-desc-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: white;
 }
 
-.card-title {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 15px;
+.card-title-input::-ms-input-placeholder, .card-desc-input::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+}
+
+.card-desc-input {
+    width: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+    border: none;
+    outline: none;
+    background-color: #7e57d4;
+    color: white;
 }
 
 .icon-div {

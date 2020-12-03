@@ -29,17 +29,21 @@ class Question extends Component {
                         </select>
                     </div>
 
-                    <div className="header">Enter a question</div>
-                    <div className="meta">Enter a description</div>
+                    <input type='text' className="header" placeholder='Enter a question' />
+                    <input type='text' className="meta" placeholder='Enter a description' />
 
                     <div style={{ display: this.state.option === '0' ? 'block' : 'none' }}>
-                        <input type='radio'></input>
-                        <input type='text' className='input'></input>
+                        <input type='radio' />
+                        <input type='text' className='input' />
+                        <span className='remove-text'>Remove</span>
+                        <span className='add-text'>Add</span>
                     </div>
 
                     <div style={{ display: this.state.option === '1' ? 'block' : 'none' }}>
-                        <input type='checkbox'></input>
-                        <input type='text' className='input'></input>
+                        <input type='checkbox' />
+                        <input type='text' className='input' />
+                        <span className='remove-text'>Remove</span>
+                        <span className='add-text'>Add</span>
                     </div>
 
                     <div style={{ display: this.state.option === '2' ? 'block' : 'none' }}>
