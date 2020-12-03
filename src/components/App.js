@@ -6,23 +6,35 @@ import Question from './Question';
 
 class App extends React.Component {
 
+    state = {
+        count: [],
+    }
+
+    onAddClick = () => {
+        this.setState({
+            count: [...this.state.count, <Question key={this.state.count.length + 1} id={this.state.count.length + 1} />]
+          })
+    }
 
     render() {
+
         return (
             <div>
                 <div className='logo'><span className='logo-text'>Ringle Survey</span></div>
 
-                <div className='container'>
+                <div id='container'>
                     <div className='card'>
                         <input type='text' placeholder='Enter a title of survey' className='card-title-input'></input>
                         <input type='text' placeholder='Enter a description of survey' className='card-desc-input'></input>
                     </div>
 
-                    <Question />
+                    <Question id={0} />
+
+                    {this.state.count}
                     
                 </div>
 
-                <div className='icon-div'><img src={plus} className='plus-icon' alt='Add Question' /></div>
+                <div className='icon-div'><img src={plus} className='plus-icon' onClick={this.onAddClick} alt='Add Question' /></div>
 
             </div>
         );
