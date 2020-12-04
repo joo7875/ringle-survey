@@ -7,16 +7,18 @@ import Question from './Question';
 class App extends React.Component {
 
     state = {
-        count: [],
+        count: [0],
     }
 
     onAddClick = () => {
         this.setState({
-            count: [...this.state.count, <Question key={this.state.count.length + 1} id={this.state.count.length + 1} />]
+            count: [...this.state.count, this.state.count.length]
           })
     }
 
     render() {
+
+        console.log(this.state.count);
 
         return (
             <div>
@@ -28,9 +30,9 @@ class App extends React.Component {
                         <input type='text' placeholder='Enter a description of survey' className='card-desc-input'></input>
                     </div>
 
-                    <Question id={0} />
-
-                    {this.state.count}
+                    {this.state.count.map((data, index) => 
+                        <Question id={index} />
+                    )}
                     
                 </div>
 
