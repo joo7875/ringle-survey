@@ -7,8 +7,7 @@ class Question extends Component {
       super(props);
 
       this.state =  { 
-            radioArr: [''],
-            checkboxArr: [''],
+            selectArr: [''],
             option: '0',
             id: this.props.id
          };
@@ -21,66 +20,72 @@ class Question extends Component {
 
     onDeleteCard = (id) => {
         document.getElementById('card-' + id).remove();
+        sessionStorage.removeItem('title-' + id);
+        sessionStorage.removeItem('desc-' + id);
+        sessionStorage.removeItem('select-' + id);
+        sessionStorage.removeItem('select-text-' + id);
     }
 
-    onAddClick = (id, index, option) => {
-        if (option === '0') {
-            document.getElementById('radio-add-' + id + '-' + index).style.display = 'none';
-            this.setState(prevState => ({ radioArr: [...prevState.radioArr, '']}));
-        }
-        else if (option === '1') {
-            document.getElementById('checkbox-add-' + id + '-' + index).style.display = 'none';
-            this.setState(prevState => ({ checkboxArr: [...prevState.checkboxArr, '']}));
-        }
+    onAddClick = (id, index) => {
+        document.getElementById('select-add-' + id + '-' + index).style.display = 'none';
+        this.setState(prevState => ({ selectArr: [...prevState.selectArr, '']}));
     }
 
-    onRemoveClick (id, index, option){
-        if (option === '0') {
-            if (this.state.radioArr.length > 1) document.getElementById('radio-add-' + id + '-' + (this.state.radioArr.length - 2)).style.display = 'inline-block';
-            else this.onDeleteCard(id);
+    onRemoveClick (id, index){
+        if (this.state.selectArr.length > 1) document.getElementById('select-add-' + id + '-' + (this.state.selectArr.length - 2)).style.display = 'inline-block';
+        else this.onDeleteCard(id);
 
-            let radioArr = [...this.state.radioArr];
-            radioArr.splice(index, 1);
-            this.setState({ radioArr });
-        }
-        else if (option === '1') {
-            if (this.state.checkboxArr.length > 1) document.getElementById('checkbox-add-' + id + '-' + (this.state.checkboxArr.length - 2)).style.display = 'inline-block';
-            else this.onDeleteCard(id);
+        let selectArr = [...this.state.selectArr];
+        selectArr.splice(index, 1);
+        this.setState({ selectArr });
 
-            let checkboxArr = [...this.state.checkboxArr];
-            checkboxArr.splice(index, 1);
-            this.setState({ checkboxArr });
-        }
+        sessionStorage.setItem('select-' + id, selectArr);
     }
 
-    onTextChange (index, option, event) {
-        if (option === '0') {
-            let radioArr = [...this.state.radioArr];
-            radioArr[index] = event.target.value;
-            this.setState({ radioArr });
+    onTextChange (id, option, index, event) {
+
+        if (option !== '2') {
+            let selectArr = [...this.state.selectArr];
+            selectArr[index] = event.target.value;
+            this.setState({ selectArr });
+
+            sessionStorage.setItem('select-' + id, selectArr);
         }
-        else if (option === '1') {
-            let checkboxArr = [...this.state.checkboxArr];
-            checkboxArr[index] = event.target.value;
-            this.setState({ checkboxArr });
+        else {
+            sessionStorage.setItem('select-text-' + id, event.target.value);
         }
     }
 
     onSubmit = (event) => {
-        // alert('A name was submitted: ' + this.state.radioArr.join(', '));
         
+        console.log('--------------------- Ringle Survey ----------------------');
         console.log('Survey title: ' + sessionStorage.getItem('survey-title'));
         console.log('Survey description: ' + sessionStorage.getItem('survey-desc'));
+        console.log('----------------------------------------------------------');
+
+        for (var i = 0; i <= this.state.id; i++) {
+
+            if (sessionStorage.getItem('title-' + i) !== null) console.log('Question title: ' + sessionStorage.getItem('title-' + i));
+            if (sessionStorage.getItem('desc-' + i) !== null) console.log('Question description: ' + sessionStorage.getItem('desc-' + i));
+            if (sessionStorage.getItem('select-' + i) !== null) console.log(sessionStorage.getItem('select-' + i));
+            if (sessionStorage.getItem('select-text-' + i) !== null) console.log(sessionStorage.getItem('select-text-' + i));
+
+            if (sessionStorage.getItem('title-' + i) !== null || sessionStorage.getItem('desc-' + i) !== null || sessionStorage.getItem('select-' + i) !== null || sessionStorage.getItem('select-text-' + i) !== null) console.log('');
+        }
+        
 
         event.preventDefault();
     }
+
+    onTitleChange = (id, e) => { sessionStorage.setItem('title-' + id, e.target.value); }
+
+    onDescChange = (id, e) => { sessionStorage.setItem('desc-' + id, e.target.value); }
     
 
     render() {
 
         var id = this.state.id;
-        var radioArr = this.state.radioArr;
-        var checkboxArr = this.state.checkboxArr;
+        var selectArr = this.state.selectArr;
         var option = this.state.option;
 
         return (
@@ -97,35 +102,27 @@ class Question extends Component {
                     </select>
                 </div>
 
-                <input type='text' className="header" placeholder='Enter a question' />
-                <input type='text' className="meta" placeholder='Enter a description' />
+                <input type='text' className="header" placeholder='Enter a question' onChange={this.onTitleChange.bind(this, id)} />
+                <input type='text' className="meta" placeholder='Enter a description' onChange={this.onDescChange.bind(this, id)} />
 
-                <div id={'radio-' + id} style={{ display: option === '0' ? 'block' : 'none' }}>
+                <div style={{ display: option !== '2' ? 'block' : 'none' }}>
 
-                    {radioArr.map((data, index) => 
+                    {selectArr.map((data, index) => 
                         <div key={index} className='bottom-gap'>
-                            <input type='radio' />
-                            <input type="text" className='input' value={data || ''} onChange={this.onTextChange.bind(this, index, option)} />
-                            <span className='remove-text' onClick={this.onRemoveClick.bind(this, id, index, option)}>Remove</span>
-                            <span id={'radio-add-' + id + '-' + index} className='add-text' onClick={() => this.onAddClick(id, index, option)}>Add</span>
+
+                            <input type='radio' style={{ display: option === '0' ? 'inline-block' : 'none' }} />
+                            <input type='checkbox' style={{ display: option === '1' ? 'inline-block' : 'none' }} />
+
+                            <input type="text" className='input' value={data || ''} onChange={this.onTextChange.bind(this, id, option, index)} />
+                            <span className='remove-text' onClick={this.onRemoveClick.bind(this, id, index)}>Remove</span>
+                            <span id={'select-add-' + id + '-' + index} className='add-text' onClick={() => this.onAddClick(id, index)}>Add</span>
                         </div>
                     )}
 
-                </div>
-
-                <div id={'checkbox-' + id} style={{ display: option === '1' ? 'block' : 'none' }}>
-                    {checkboxArr.map((data, index) => 
-                        <div key={index} className='bottom-gap'>
-                            <input type='checkbox' />
-                            <input type="text" className='input' value={data || ''} onChange={this.onTextChange.bind(this, index, option)} />
-                            <span className='remove-text' onClick={this.onRemoveClick.bind(this, id, index, option)}>Remove</span>
-                            <span id={'checkbox-add-' + id + '-' + index} className='add-text' onClick={() => this.onAddClick(id, index, option)}>Add</span>
-                        </div>
-                    )}
                 </div>
 
                 <div style={{ display: option === '2' ? 'block' : 'none' }}>
-                    <textarea className='textarea'></textarea>
+                    <textarea className='textarea' onChange={this.onTextChange.bind(this, id, option, '')} />
                 </div>
 
                 <div className='delete-btn'>
