@@ -68,6 +68,10 @@ class Question extends Component {
 
     onSubmit = (event) => {
         // alert('A name was submitted: ' + this.state.radioArr.join(', '));
+        
+        console.log('Survey title: ' + sessionStorage.getItem('survey-title'));
+        console.log('Survey description: ' + sessionStorage.getItem('survey-desc'));
+
         event.preventDefault();
     }
     
@@ -135,6 +139,6 @@ class Question extends Component {
             </div>
         );
     }
-  }
+}
   
 export default Question;

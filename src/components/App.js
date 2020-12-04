@@ -8,6 +8,8 @@ class App extends React.Component {
 
     state = {
         count: [0],
+        title: '',
+        desc: ''
     }
 
     onAddCardClick = () => {
@@ -17,9 +19,18 @@ class App extends React.Component {
           })
     }
 
+    onTitleChange = (e) => {
+        this.setState({ title: e.target.value });
+    }
+
+    onDescChange = (e) => {
+        this.setState({ desc: e.target.value });
+    }
+
     render() {
 
-        console.log(this.state.count);
+        sessionStorage.setItem('survey-title', this.state.title);
+        sessionStorage.setItem('survey-desc', this.state.desc);
 
         return (
             <div>
@@ -27,8 +38,8 @@ class App extends React.Component {
 
                 <div className='container'>
                     <div className='card'>
-                        <input type='text' placeholder='Enter a title of survey' className='card-title-input'></input>
-                        <input type='text' placeholder='Enter a description of survey' className='card-desc-input'></input>
+                        <input type='text' placeholder='Enter a title of survey' className='card-title-input' onChange={this.onTitleChange} />
+                        <input type='text' placeholder='Enter a description of survey' className='card-desc-input' onChange={this.onDescChange} />
                     </div>
 
                     {this.state.count.map((data, index) => 
@@ -38,8 +49,6 @@ class App extends React.Component {
                 </div>
 
                 <div className='icon-div'><img src={plus} className='plus-icon' onClick={this.onAddCardClick} alt='Add Question' /></div>
-
-                
 
             </div>
         );
