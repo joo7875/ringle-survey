@@ -10,9 +10,10 @@ class App extends React.Component {
         count: [0],
     }
 
-    onAddClick = () => {
+    onAddCardClick = () => {
         this.setState({
-            count: [...this.state.count, this.state.count.length]
+            count: [...this.state.count, this.state.count.length],
+            submit: null
           })
     }
 
@@ -24,19 +25,21 @@ class App extends React.Component {
             <div>
                 <div className='logo'><span className='logo-text'>Ringle Survey</span></div>
 
-                <div id='container'>
+                <div className='container'>
                     <div className='card'>
                         <input type='text' placeholder='Enter a title of survey' className='card-title-input'></input>
                         <input type='text' placeholder='Enter a description of survey' className='card-desc-input'></input>
                     </div>
 
                     {this.state.count.map((data, index) => 
-                        <Question id={index} />
+                        <Question key={index} id={index} />
                     )}
                     
                 </div>
 
-                <div className='icon-div'><img src={plus} className='plus-icon' onClick={this.onAddClick} alt='Add Question' /></div>
+                <div className='icon-div'><img src={plus} className='plus-icon' onClick={this.onAddCardClick} alt='Add Question' /></div>
+
+                
 
             </div>
         );

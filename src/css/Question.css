@@ -98,15 +98,12 @@ select {
     margin-bottom: 10px;
 }
 
-
-/* 1 */
 .remove-text {
     margin-left: 10px;
     font-size: 11.5px;
     font-weight: 500;
     color: red;
     cursor: pointer;
-
 }
 
 .add-text {
@@ -117,9 +114,36 @@ select {
     cursor: pointer;
 }
 
-/* 2 */
 .textarea {
     width: 100%;
     padding: 10px;
     border: solid 1px #d6d6d6;
+}
+
+.delete-btn {
+    text-align: end;
+    margin-top: 10px;
+}
+
+.negative {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+
+.submit-div {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 30px;
+    
+}
+
+.submit-btn {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    background-color: #7e57d4 !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
 }
