@@ -40,6 +40,7 @@ select {
    font-size: 17px;
    font-weight: 600;
    margin-bottom: 10px;
+   line-height: 1;
 
     width: 80%;
     font-family: 'Noto Sans KR', sans-serif;
@@ -65,6 +66,7 @@ select {
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 20px;
+    line-height: 1;
 
     width: 80%;
     font-family: 'Noto Sans KR', sans-serif;
