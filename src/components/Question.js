@@ -4,7 +4,14 @@ import '../css/Question.css';
 class Question extends Component {
 
     constructor(props) {
-      super(props);
+      super(props); // 생성자. props를 설정하기 위한 초기값
+
+      // bind
+        // this를 가르키는 context를 변경하여 바로 실행시켜주는 메소드
+        // 메소드의 재사용과 공유 그리고 중복을 방지
+
+        // 콜백으로 함수를 만들 때 기본적으로는 함수 안에서 this 를 사용하지 못한다.
+        // 이때 this를 사용하고 싶다면 함수 끝에 .bind를 사용하여 this 를 넘기면 사용할 수 있다.
 
       this.state =  { 
             selectArr: [''],
@@ -74,7 +81,7 @@ class Question extends Component {
         }
         
 
-        event.preventDefault();
+        event.preventDefault(); // 현재 이벤트의 기본 동작을 중단
     }
 
     onTitleChange = (id, e) => { sessionStorage.setItem('title-' + id, e.target.value); }

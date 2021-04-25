@@ -9,11 +9,11 @@ class App extends React.Component {
     state = {
         count: [0],
         title: '',
-        desc: '',
-
-        titleArr: []
+        desc: ''
     }
 
+    
+    
     componentDidMount() {
         window.onbeforeunload = (e) => {
             for (var key in sessionStorage) {
@@ -50,7 +50,7 @@ class App extends React.Component {
                     </div>
 
                     {this.state.count.map((data, index) => 
-                        <Question key={index} id={index} titleArr={this.state.titleArr} />
+                        <Question key={index} id={index} />
                     )}
                     
                 </div>
