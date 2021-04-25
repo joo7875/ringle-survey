@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/ringle-survey/static/css/main.57382693.chunk.css",
+    "main.js": "/ringle-survey/static/js/main.d8b74e5f.chunk.js",
+    "main.js.map": "/ringle-survey/static/js/main.d8b74e5f.chunk.js.map",
+    "runtime-main.js": "/ringle-survey/static/js/runtime-main.f1de4ae2.js",
+    "runtime-main.js.map": "/ringle-survey/static/js/runtime-main.f1de4ae2.js.map",
+    "static/js/2.e888b457.chunk.js": "/ringle-survey/static/js/2.e888b457.chunk.js",
+    "static/js/2.e888b457.chunk.js.map": "/ringle-survey/static/js/2.e888b457.chunk.js.map",
+    "static/js/3.90319c9b.chunk.js": "/ringle-survey/static/js/3.90319c9b.chunk.js",
+    "static/js/3.90319c9b.chunk.js.map": "/ringle-survey/static/js/3.90319c9b.chunk.js.map",
+    "index.html": "/ringle-survey/index.html",
+    "static/css/main.57382693.chunk.css.map": "/ringle-survey/static/css/main.57382693.chunk.css.map",
+    "static/js/2.e888b457.chunk.js.LICENSE.txt": "/ringle-survey/static/js/2.e888b457.chunk.js.LICENSE.txt",
+    "static/media/Question.css": "/ringle-survey/static/media/dropdown.76bb9659.svg",
+    "static/media/plus.b03e3495.svg": "/ringle-survey/static/media/plus.b03e3495.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f1de4ae2.js",
+    "static/js/2.e888b457.chunk.js",
+    "static/css/main.57382693.chunk.css",
+    "static/js/main.d8b74e5f.chunk.js"
+  ]
+}
